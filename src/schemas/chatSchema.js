@@ -10,5 +10,4 @@ const chatSchema = mongoose.Schema({
         required: true
     }
 })
-
 module.exports = mongoose.model('chat', chatSchema)
