@@ -95,7 +95,7 @@ submitButton.addEventListener('click', async (event) => {
     // console.log(movies);
 })
 
-const apiKey = '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'; // Replace this with your actual OpenAI API key
+const apiKey = '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';
 const endpoint = 'https://api.openai.com/v1/chat/completions';
 
 async function getChatCompletion(message) {
@@ -117,6 +117,8 @@ async function getChatCompletion(message) {
       })
     });
 
+    console.log(response)
+
     if (!response.ok) {
       throw new Error('Network response was not ok.');
     }
@@ -130,8 +132,7 @@ async function getChatCompletion(message) {
   }
 }
 
-// Example usage:
-const userMessage = 'Hello, ChatGPT!'; // Replace this with the user's message
+const userMessage = 'Hello, ChatGPT!'
 getChatCompletion(userMessage).then((response) => {
-  console.log('AI Reply:', response);
-});
+  console.log('AI Reply:', response)
+})
