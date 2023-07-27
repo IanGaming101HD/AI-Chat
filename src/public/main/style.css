@@ -133,3 +133,11 @@ h1 {
     display: none;
     display: block
 } */
+
+.no-data-icon {
+    font-size: 150px;
+}
+
+.fa-angle-double-right {
+    font-size: 25px;
+}
