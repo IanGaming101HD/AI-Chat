@@ -11,11 +11,25 @@ h1 {
 }
 
 .chat-container {
-    margin-left: 70%;
+    position: absolute;
+    top: 75px;
+    right: 2%;
     width: 500px;
     height: 750px;
     border: 2px solid #000000;
+    background-color: #ffffff;
     border-radius: 10px;
+}
+
+.gov-container {
+    position: absolute;
+    top: 75px;
+    left: 2%;
+}
+
+.gov-website {
+    width: 1250px;
+    height: 750px;
 }
 
 .input-box {
