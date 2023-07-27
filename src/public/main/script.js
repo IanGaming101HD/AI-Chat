@@ -17,7 +17,13 @@ function hideEntireDiv(div) {
 
 function showEntireDiv(div) {
     div.hidden = false
-    Array.from(div.children).forEach((child) => child.hidden = false)
+    Array.from(div.children).forEach((child) => {
+        child.hidden = false
+
+        if (child.nodeName === 'I') {
+            child.style.display = 'inline'
+        }
+    })
 }
 
 let chatContent = localStorage.getItem('chat-content')
@@ -45,15 +51,16 @@ if (chatContent) {
 //     noDataContainer.style.display = 'none'
 // }
 
-let user = true
+let userTurn = true
 
-questionInput.addEventListener('click', (event) => {
-    if (event.key === "Enter") {
+questionInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
         event.preventDefault()
         submitButton.click()
       }
 })
-submitButton.addEventListener('click', (event) => {
+
+submitButton.addEventListener('click', async (event) => {
     event.preventDefault()
     if (!questionInput.value) return;
 
@@ -67,23 +74,64 @@ submitButton.addEventListener('click', (event) => {
     })
     localStorage.setItem('chat-content', JSON.stringify(chatContent))
 
-
-    // <div class='user-message message'>Hi</div>
-    // <div class='bot-message message'>Hello</div>
-
-    let dataContainer = document.getElementById('data-container')
-    let newMessage = document.createElement('div')
-    dataContainer.appendChild(newMessage)
-    newMessage.classList.add('message')
-    user ? newMessage.classList.add('user-message') : newMessage.classList.add('bot-message')
-    user = !user
-    newMessage.innerText = questionInput.value
-
-    questionInput.value = ''
-
     // let newMessage = new chat({
     //     user: true,
     //     message: search.value
     // });
     // newMessage.save()
+
+    let dataContainer = document.getElementById('data-container')
+    let newMessage = document.createElement('div')
+    dataContainer.appendChild(newMessage)
+    newMessage.classList.add('message')
+    userTurn ? newMessage.classList.add('user-message') : newMessage.classList.add('bot-message')
+    userTurn = !userTurn
+    newMessage.innerText = questionInput.value
+
+    questionInput.value = ''
+
+    // let response = await fetch('http://example.com/movies.json');
+    // let movies = await response.json();
+    // console.log(movies);
 })
+
+const apiKey = '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'; // Replace this with your actual OpenAI API key
+const endpoint = 'https://api.openai.com/v1/chat/completions';
+
+async function getChatCompletion(message) {
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {
+            role: 'user',
+            content: message
+          }
+        ]
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok.');
+    }
+
+    let data = await response.json();
+    let aiReply = data.choices[0].message.content;
+    return aiReply
+  } catch (error) {
+    console.error('Error:', error);
+    return 'An error occurred while processing your request.';
+  }
+}
+
+// Example usage:
+const userMessage = 'Hello, ChatGPT!'; // Replace this with the user's message
+getChatCompletion(userMessage).then((response) => {
+  console.log('AI Reply:', response);
+});
