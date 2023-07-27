@@ -22,18 +22,18 @@
                     <button id='rename-chat' class='buttons'><i class='fa fa-pencil-square-o'></i></button>
                     <button id='export-chat' class='buttons'><i class='fa fa-download'></i></button>
                     <button id='reset-chat' class='buttons'><i class='fa fa-refresh'></i></button>
-                    <button id='delete-chat' class='buttons'><i class='fa-trash-o'></i></button>
+                    <button id='delete-chat' class='buttons'><i class='fa fa-trash-o'></i></button>
                 </div>
             </div>
             <div id='no-data-container' class='no-data-container'>
-                <i class='no-data-icon fa fa-inbox'></i>
+                <i class='fa fa-inbox' hidden></i>
                 <span class='no-data-text'>No data</span>
             </div>
             <div id='data-container' class='data-container'>
-                <div class='user-message message'>Hi</div>
                 <div class='bot-message message'>Hello</div>
+                <div class='user-message message'>Hi</div>
             </div>
-            <form id='input-box' class='input-box'>
+            <form id='input-box' class='input-box' autocomplete='off'>
                 <input id='question-input' class='question-input' placeholder='Ask any questions...'>
                 <button id='submit-button' class='submit-button' type='button'><i class='fa fa-angle-double-right'></i></button>
             </form>

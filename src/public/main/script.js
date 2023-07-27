@@ -6,7 +6,13 @@ const noDataContainer = document.getElementById('no-data-container')
 
 function hideEntireDiv(div) {
     div.hidden = true
-    Array.from(div.children).forEach((child) => child.hidden = true)
+    Array.from(div.children).forEach((child) => {
+        child.hidden = true
+
+        if (child.nodeName === 'I') {
+            child.style.display = 'none'
+        }
+    })
 }
 
 function showEntireDiv(div) {
@@ -41,6 +47,12 @@ if (chatContent) {
 
 let user = true
 
+questionInput.addEventListener('click', (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault()
+        submitButton.click()
+      }
+})
 submitButton.addEventListener('click', (event) => {
     event.preventDefault()
     if (!questionInput.value) return;
@@ -55,7 +67,7 @@ submitButton.addEventListener('click', (event) => {
     })
     localStorage.setItem('chat-content', JSON.stringify(chatContent))
 
-    
+
     // <div class='user-message message'>Hi</div>
     // <div class='bot-message message'>Hello</div>
 
@@ -66,6 +78,8 @@ submitButton.addEventListener('click', (event) => {
     user ? newMessage.classList.add('user-message') : newMessage.classList.add('bot-message')
     user = !user
     newMessage.innerText = questionInput.value
+
+    questionInput.value = ''
 
     // let newMessage = new chat({
     //     user: true,
