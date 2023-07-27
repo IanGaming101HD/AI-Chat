@@ -4,6 +4,7 @@
 
 <head>
     <title>Chat</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='./public/main/style.css'>
 </head>
 
@@ -17,15 +18,15 @@
             <div class='top-chat-container'>
                 <h2 class='chat-subheading'>Chat</h2>
                 <div class='buttons-container'>
-                    <button id='share-chat' class='buttons'><img src'./public/images/share.png'></button>
-                    <button id='rename-chat' class='buttons'><img src'./public/images/rename.png'></button>
-                    <button id='export-chat' class='buttons'><img src'./public/images/export.png'></button>
-                    <button id='reset-chat' class='buttons'><img src'./public/images/reset.png'></button>
-                    <button id='delete-chat' class='buttons'><img src'./public/images/delete.png'></button>
+                    <button id='share-chat' class='buttons'><i class='fa fa-share-square-o'></i></button>
+                    <button id='rename-chat' class='buttons'><i class='fa fa-pencil-square-o'></i></button>
+                    <button id='export-chat' class='buttons'><i class='fa fa-download'></i></button>
+                    <button id='reset-chat' class='buttons'><i class='fa fa-refresh'></i></button>
+                    <button id='delete-chat' class='buttons'><i class='fa-trash-o'></i></button>
                 </div>
             </div>
             <div id='no-data-container' class='no-data-container'>
-                <img src'./public/images/empty.png'>
+                <i class='fa fa-inbox'></i>
                 <span class='no-data-text'>No data</span>
             </div>
             <div id='data-container' class='data-container'>
@@ -34,7 +35,7 @@
             </div>
             <form id='input-box' class='input-box'>
                 <input id='question-input' class='question-input' placeholder='Ask any questions...'>
-                <button id='submit-button' class='submit-button' type='button'><img src'./public/images/empty.png'></button>
+                <button id='submit-button' class='submit-button' type='button'><i class='fa fa-search'></i></button>
             </form>
         </div>
     </div>
