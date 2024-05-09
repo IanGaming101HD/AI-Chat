@@ -95,7 +95,7 @@ submitButton.addEventListener('click', async (event) => {
     // console.log(movies);
 })
 
-const apiKey = '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';
+const apiKey = '';
 const endpoint = 'https://api.openai.com/v1/chat/completions';
 
 async function getChatCompletion(message) {
